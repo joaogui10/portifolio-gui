@@ -24,11 +24,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Saira:wght@100;200;300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Saira:wght@100;200;300;400;500&family=Fira+Code:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="manifest" href="manifest.json" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/experience.css" />
+    <link rel="stylesheet" href="assets/css/theme-tech.css" />
     <link
       rel="shortcut icon"
       href="assets/image/logo-gui.png"
@@ -55,7 +57,8 @@
           </div>
           <ul class="nav-list">
             <li><a href="#s-about">Who am I</a></li>
-            <li></a>
+            <li><a href="#s-experience">Experience</a></li>
+            <li>
               <a href="#s-projects">Projects</a>
             </li>
             <li>
@@ -90,11 +93,11 @@
 
 
 
-             <a
-  href="assets/gui_cv.pdf"
-  download="gui_cv.pdf"
-  class="delayExtraBigReveal"
->
+            <a
+              href="assets/CV_GUI_ENG.pdf"
+              download="CV_GUI_ENG.pdf"
+              class="delayExtraBigReveal"
+            >
   Download CV
 </a>
 
@@ -166,9 +169,7 @@
             <article id="about-text">
               <h2 class="delaySmallReveal">Who am I  <span>.</span></h2>
               <p class="delayMediumReveal">
-                My name is João Guilherme. Seeking to become a better person and a more capable professional.
-                 I just finished my internship at Casio Brazil, and I'm looking forward to starting in the area.
-                 And always acquiring experiences, in languages: Angular, JavaScript, TypeScript, HTML/CSS, Node.Js.
+                I am a Full Stack Developer with hands-on experience in Flutter/Dart, Node.js, React, Next.js, JavaScript, TypeScript, Laravel, PHP, and HTML/CSS. I work on the complete development of applications, from front-end to back-end, creating modern interfaces, functional APIs, and scalable systems. I also have experience with UX/CX, combining technical knowledge with a digital marketing perspective to deliver efficient, intuitive, and visually well-built solutions.
               </p>
             </article>
 
@@ -184,6 +185,42 @@
         </div>
       </section>
 
+      <section id="s-experience">
+        <div class="grid-layout">
+          <h2 class="delaySmallReveal">Corporate Background <span>.</span></h2>
+          <div id="experience">
+            
+            <article class="intervalCardReveal">
+              <h3>Full Stack Developer – Integrade Consulting</h3>
+              <h4>Inventory Management Company</h4>
+              <p>
+                Expertise in developing and maintaining web and mobile solutions focused on controlling and managing assets. My main responsibilities include:
+              </p>
+              <ul>
+                <li>Development and improvements to iFlow, a web platform used by clients to manage inventory movements, implementing corrections and improvements to layout and usability using React and Node.js.</li>
+                <li>Development of the mobile application in Flutter/Dart, used by the field team to register items, including image capture and sending information to the database.</li>
+                <li>Conversion and processing of databases sent by clients, working on data migration and standardization between MySQL and Oracle, ensuring consistency and integrity of information.</li>
+              </ul>
+            </article>
+
+            <article class="intervalCardReveal">
+              <h3>Administrative Assistant – CASIO BRAZIL</h3>
+              <p>
+                Responsible for payments and contracts for my team. Using the TOTVS system for payments and PROJURIS for contracts. For some analysis, studies, and planning, I use Excel.
+              </p>
+            </article>
+
+            <article class="intervalCardReveal">
+              <h3>Gui’s System</h3>
+              <h4>Scheduling Platform for Clinics</h4>
+              <p>
+                Development of a complete web system for managing clinic appointments, using Laravel (PHP) with MVC architecture and integration with a MySQL database. The platform allows for user registration and authentication, client management, appointment creation and control, as well as a history of appointments. The system was developed with a focus on code organization, separation of responsibilities, information security, and data integrity, ensuring a scalable structure prepared for future expansions and multiple users.
+              </p>
+            </article>
+
+          </div>
+        </div>
+      </section>
 
       <section id="s-projects">
         <div class="grid-layout">
@@ -401,4 +438,49 @@
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <script type="module" src="assets/js/main.js"></script>
   </body>
+  <script>
+     // Otimização: Criar elemento Glow uma única vez
+     const cursorGlow = document.createElement('div');
+     cursorGlow.id = 'cursor-glow';
+     cursorGlow.style.position = 'fixed';
+     cursorGlow.style.width = '400px';
+     cursorGlow.style.height = '400px';
+     cursorGlow.style.background = 'radial-gradient(circle, rgba(0, 243, 255, 0.15) 0%, transparent 70%)';
+     cursorGlow.style.borderRadius = '50%';
+     cursorGlow.style.pointerEvents = 'none';
+     cursorGlow.style.zIndex = '9999';
+     cursorGlow.style.transform = 'translate(-50%, -50%)';
+     cursorGlow.style.transition = 'width 0.2s, height 0.2s, background 0.2s'; // Background transition suavizada
+     cursorGlow.style.mixBlendMode = 'screen';
+     document.body.appendChild(cursorGlow);
+
+     // Efeito Parallax Suave e Glow no Mouse
+     document.addEventListener('mousemove', (e) => {
+       const x = e.clientX;
+       const y = e.clientY;
+       
+       // Move o background sutilmente (Parallax)
+       const mouseX = x / window.innerWidth;
+       const mouseY = y / window.innerHeight;
+       document.body.style.backgroundPosition = `${mouseX * 20}px ${mouseY * 20}px`; // Movimento mais sutil
+       
+       // Atualiza posição do Glow
+       cursorGlow.style.left = x + 'px';
+       cursorGlow.style.top = y + 'px';
+       
+       // Interatividade inteligente
+       const hoveredElement = document.elementFromPoint(x, y);
+       const isInteractive = hoveredElement?.matches('a, button, input, .card, article') || hoveredElement?.closest('a, button, article');
+
+       if (isInteractive) {
+         cursorGlow.style.width = '150px'; // Fica menor e mais intenso
+         cursorGlow.style.height = '150px';
+         cursorGlow.style.background = 'radial-gradient(circle, rgba(112, 0, 255, 0.4) 0%, transparent 70%)'; // Roxo intenso
+       } else {
+         cursorGlow.style.width = '400px';
+         cursorGlow.style.height = '400px';
+         cursorGlow.style.background = 'radial-gradient(circle, rgba(0, 243, 255, 0.15) 0%, transparent 70%)'; // Cyan disperso
+       }
+     });
+   </script>
 </html>
