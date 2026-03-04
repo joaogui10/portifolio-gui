@@ -1,0 +1,350 @@
+:root {
+  /* --- PALETA DE CORES: DEEP SPACE CYBERPUNK (Harmonia Refinada) --- */
+  
+  /* Cores Principais - Mais profundas e conectadas */
+  --color-main: #00f3ff; /* Cyan Elétrico (Energia) */
+  --color-secondary: #7000ff; /* Indigo Elétrico (Profundidade) - Substitui o Roxo claro */
+  --color-accent: #ff003c; /* Razor Pink (Alertas/Detalhes) */
+  
+  /* Fundos - O "Vazio" do espaço */
+  --bg-void: #020205; /* Preto quase absoluto */
+  --bg-deep: #050510; /* Azul muito escuro */
+  --bg-panel: rgba(10, 10, 25, 0.6); /* Painéis semitransparentes */
+  
+  /* Textos */
+  --color-text-main: #e0e6ed; /* Branco gelo */
+  --color-text-dim: #94a3b8; /* Cinza azulado */
+  
+  /* Efeitos */
+  --glow-main: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+  --glow-text: 0 0 5px rgba(0, 243, 255, 0.5);
+  --border-tech: 1px solid rgba(0, 243, 255, 0.15);
+  
+  /* Fontes */
+  --font-display: 'Saira', sans-serif;
+  --font-code: 'Fira Code', 'Courier New', monospace;
+}
+
+/* --- RESET & BASE --- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-void) !important;
+  color: var(--color-text-main) !important;
+  font-family: var(--font-display) !important;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* --- BACKGROUND AVANÇADO: GRID CYBERPUNK --- */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center top;
+  z-index: -2;
+  pointer-events: none;
+  /* Efeito de perspectiva sutil */
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.2) 100%);
+}
+
+/* Vignette para focar no centro */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, var(--bg-void) 90%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* --- SCROLLBAR CUSTOMIZADA --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-main);
+}
+
+/* --- HEADER: PAINEL DE CONTROLE FLUTUANTE --- */
+header {
+  background: rgba(2, 2, 5, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.1) !important;
+  height: 80px !important;
+  position: fixed !important;
+  width: 100% !important;
+  top: 0;
+  z-index: 1000;
+}
+
+header .grid-layout nav .nav-list li a {
+  font-family: var(--font-code);
+  font-size: 1.2rem !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-text-dim) !important;
+  padding: 5px 10px;
+  position: relative;
+  transition: all 0.3s;
+}
+
+header .grid-layout nav .nav-list li a:hover {
+  color: var(--color-main) !important;
+  text-shadow: var(--glow-text);
+}
+
+/* Indicador de Hover Tecnológico */
+header .grid-layout nav .nav-list li a::before {
+  content: '[';
+  margin-right: 5px;
+  opacity: 0;
+  color: var(--color-secondary);
+  transition: all 0.3s;
+}
+header .grid-layout nav .nav-list li a::after {
+  content: ']';
+  margin-left: 5px;
+  opacity: 0;
+  color: var(--color-secondary);
+  transition: all 0.3s;
+}
+header .grid-layout nav .nav-list li a:hover::before,
+header .grid-layout nav .nav-list li a:hover::after {
+  opacity: 1;
+  margin: 0 5px;
+}
+
+/* --- TIPOGRAFIA & TÍTULOS DE IMPACTO --- */
+h1, h2, h3 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Efeito Glitch no Nome Principal (Simulado) */
+#home-name {
+  color: var(--color-main) !important;
+  font-size: 6rem !important;
+  font-weight: 800;
+  text-shadow: 2px 2px 0px var(--color-secondary);
+  position: relative;
+  display: inline-block;
+}
+
+.typewriter {
+  font-family: var(--font-code) !important;
+  color: var(--color-accent) !important;
+  background: rgba(255, 0, 60, 0.1);
+  padding: 5px 15px;
+  border-left: 2px solid var(--color-accent);
+  font-size: 1.4rem !important;
+  margin-top: 15px;
+}
+
+/* Títulos de Seção Estilizados */
+h2 {
+  font-size: 3.5rem !important;
+  color: var(--color-text-main) !important;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 60px !important;
+}
+
+h2::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 40px;
+  background: var(--color-main);
+  box-shadow: var(--glow-main);
+}
+
+h2 span {
+  display: none; /* Remove o ponto antigo */
+}
+
+/* --- CARDS AVANÇADOS: MÓDULOS HUD --- */
+/* Base para todos os cards */
+#experience article, #projects article {
+  background: linear-gradient(135deg, rgba(10,10,25,0.8) 0%, rgba(5,5,10,0.9) 100%) !important;
+  border: 1px solid rgba(0, 243, 255, 0.1) !important;
+  border-radius: 0 !important; /* Retiramos bordas arredondadas para look tech */
+  position: relative;
+  padding: 35px !important;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  
+  /* Cantos cortados estilo Sci-Fi */
+  clip-path: polygon(
+    20px 0, 100% 0, 
+    100% calc(100% - 20px), calc(100% - 20px) 100%, 
+    0 100%, 0 20px
+  );
+}
+
+/* Decoração de Canto (Corner Accents) via Pseudo-elementos */
+#experience article::before, #projects article::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(to right, var(--color-main) 2px, transparent 2px) 0 0,
+    linear-gradient(to bottom, var(--color-main) 2px, transparent 2px) 0 0,
+    linear-gradient(to left, var(--color-main) 2px, transparent 2px) 100% 100%,
+    linear-gradient(to top, var(--color-main) 2px, transparent 2px) 100% 100%;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+#experience article:hover, #projects article:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, rgba(15,15,35,0.9) 0%, rgba(10,10,20,0.95) 100%) !important;
+  border-color: rgba(0, 243, 255, 0.4) !important;
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+}
+
+#experience article:hover::before, #projects article:hover::before {
+  opacity: 1; /* Cantos acendem */
+}
+
+/* Títulos dentro dos Cards */
+#experience article h3, #projects article h3 {
+  color: var(--color-main) !important;
+  font-size: 2rem !important;
+  margin-bottom: 5px !important;
+  text-shadow: none !important;
+}
+
+#experience article h4 {
+  color: var(--color-text-dim) !important;
+  font-family: var(--font-code);
+  font-size: 1.4rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+  margin-bottom: 20px !important;
+}
+
+#experience article p, #projects article p {
+  color: var(--color-text-dim) !important;
+  line-height: 1.7 !important;
+}
+
+/* Listas Tech */
+#experience article ul li {
+  color: var(--color-text-main) !important;
+  padding-left: 20px !important;
+}
+#experience article ul li::before {
+  content: '>';
+  color: var(--color-accent) !important;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Botões dentro de Projetos */
+#projects article a {
+  display: inline-block;
+  margin-top: 20px !important;
+  padding: 10px 20px !important;
+  background: rgba(0, 243, 255, 0.1) !important;
+  color: var(--color-main) !important;
+  font-family: var(--font-code);
+  text-transform: uppercase;
+  font-size: 1.2rem !important;
+  border: 1px solid var(--color-main) !important;
+  transition: all 0.3s;
+}
+
+#projects article a:hover {
+  background: var(--color-main) !important;
+  color: var(--bg-void) !important;
+  box-shadow: 0 0 15px var(--color-main);
+}
+
+/* --- BOTÕES PRINCIPAIS (Home) --- */
+a[href*="linkedin"], a[href*="pdf"], a[href*="github"] {
+  background: transparent !important;
+  border: 1px solid var(--color-secondary) !important;
+  color: var(--color-secondary) !important;
+  padding: 15px 40px !important;
+  font-family: var(--font-code);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s;
+  z-index: 1;
+}
+
+a[href*="linkedin"]:hover, a[href*="pdf"]:hover, a[href*="github"]:hover {
+  border-color: var(--color-main) !important;
+  color: var(--color-main) !important;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.4), inset 0 0 10px rgba(0, 243, 255, 0.2);
+  text-shadow: 0 0 5px var(--color-main);
+}
+
+/* --- SKILLS: MATRIX GRID --- */
+#skills-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px !important;
+}
+
+#skills-cards article {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 25px !important;
+  transition: 0.3s;
+}
+
+#skills-cards article:hover {
+  border-color: var(--color-accent) !important;
+  background: rgba(255, 0, 60, 0.05) !important;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 0, 60, 0.2);
+}
+
+#skills-cards article:hover i, #skills-cards article:hover svg {
+  color: var(--color-accent) !important;
+  filter: drop-shadow(0 0 5px var(--color-accent));
+}
+
+/* --- FOOTER --- */
+footer {
+  background: var(--bg-deep) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 50px 0 !important;
+}
+footer p {
+  color: var(--color-text-dim) !important;
+  font-family: var(--font-code);
+  font-size: 1.2rem !important;
+  opacity: 0.7;
+}

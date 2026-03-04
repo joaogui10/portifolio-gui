@@ -1,0 +1,83 @@
+#s-experience {
+  padding: 96px 48px;
+  text-align: center;
+  background-color: #080713;
+}
+
+@media screen and (max-width: 992px) {
+  #s-experience {
+    padding: 48px 16px;
+  }
+}
+
+#s-experience .grid-layout h2 {
+  padding-bottom: 24px;
+  color: #fafafa;
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+#s-experience .grid-layout h2 span {
+  color: #6610f2;
+  font-size: 64px;
+}
+
+#experience {
+  margin: 24px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-align: left;
+}
+
+#experience article {
+  background-color: #0b0a17;
+  padding: 32px;
+  border-left: 4px solid #6610f2; /* Detalhe visual para diferenciar */
+}
+
+#experience article h3 {
+  color: #fafafa;
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+#experience article h4 {
+  color: #909090;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+#experience article p {
+  color: #909090;
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+  margin-bottom: 16px;
+}
+
+#experience article ul {
+  list-style: none; /* Vamos usar pseudo-elementos para customizar ou disc simples */
+  padding-left: 0;
+}
+
+#experience article ul li {
+  color: #909090;
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 24px;
+}
+
+#experience article ul li::before {
+  content: "•";
+  color: #6610f2;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+}
